@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-clicker',
@@ -14,7 +15,8 @@ export class ClickerComponent implements OnInit {
   }
 
   ngOnInit(): void { //
-    this.clickSubject$?.subscribe(() => ++this.c);
+    this.clickSubject$?.pipe(filter(i => i === 'increaseMeChild'))
+      .subscribe(() => ++this.c);
   }
 
   pressMe() {
