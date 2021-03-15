@@ -18,7 +18,7 @@ export class ClickerComponent implements OnInit {
   }
 
   pressMe() {
-    this.clickSubject$?.next('icreaseME');
+    this.clickSubject$?.next('increaseME');
   }
 
 }
