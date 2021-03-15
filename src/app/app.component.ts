@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Subject} from "rxjs";
+import {pipe, Subject} from "rxjs";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,12 @@ export class AppComponent implements OnInit {
   counter = 0;
 
   ngOnInit(): void {
-    this.clickSubject$?.subscribe(() => ++this.counter);
+    this.clickSubject$?.pipe(filter(i => i === 'increaseMeMain'))
+      .subscribe(() => ++this.counter);
+  }
+
+  incr() {
+    this.clickSubject$.next('increaseMeChild')
   }
 }
+

@@ -13,12 +13,12 @@ export class ClickerComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { //
     this.clickSubject$?.subscribe(() => ++this.c);
   }
 
   pressMe() {
-    this.clickSubject$?.next('increaseME');
+    this.clickSubject$?.next('increaseMeMain');
   }
 
 }
