@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {pipe, Subject} from 'rxjs';
-import {debounceTime, filter} from 'rxjs/operators';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -9,9 +7,6 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  clickSubject$ = new Subject();
-  title = 'no';
-  counter = 0;
   form: FormGroup;
 
   constructor(fb: FormBuilder) {
@@ -21,20 +16,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clickSubject$?.pipe(filter(i => i === 'increaseMeMain'))
-      .subscribe(() => ++this.counter);
-    console.log(this.form.valueChanges);
-    this.form.valueChanges
-      .pipe(debounceTime(2000))
-      .subscribe(val => {
-        console.log(123);
-      });
-
-
+    this.form
   }
 
-  incr() {
-    this.clickSubject$.next('increaseMeChild');
+  // tslint:disable-next-line:typedef
+  submit(): void {
+    const value = {...this.form.value};
+    console.log(value);
+    localStorage.setItem('config', JSON.stringify('value'));
   }
 }
 

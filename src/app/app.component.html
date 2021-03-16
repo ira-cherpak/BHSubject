@@ -1,9 +1,19 @@
-<h4>К примеру, нам нужен компонет, который будет принимать клики</h4>
-<h5>Создадим app-clicker</h5>
-<h5>ng g component clicker</h5>
-<p>Теперь переменная в родительском компоненте имеет вид {{counter}}</p>
-<button (click)="incr()">increaseMeChild (но я в родителе)</button>
-<app-clicker [clicker]="clickSubject$"></app-clicker>
-<form [formGroup]="form">
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      This is the expansion title
+    </mat-panel-title>
+    <mat-panel-description>
+      This is a summary of the content
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>This is the primary content of the panel.</p>
+</mat-expansion-panel>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
   <input type="text" formControlName="textInput">
+  <button type="submit">Go to Close page</button>
 </form>
+
+
