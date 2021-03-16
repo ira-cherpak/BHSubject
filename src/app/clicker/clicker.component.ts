@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Subject} from "rxjs";
-import {filter} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-clicker',
@@ -8,19 +7,11 @@ import {filter} from "rxjs/operators";
   styleUrls: ['./clicker.component.scss']
 })
 export class ClickerComponent implements OnInit {
-  @Input('clicker') clickSubject$: Subject<any> | undefined;
-  c = 0;
 
-  constructor() {
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void { //
-    this.clickSubject$?.pipe(filter(i => i === 'increaseMeChild'))
-      .subscribe(() => ++this.c);
-  }
-
-  pressMe() {
-    this.clickSubject$?.next('increaseMeMain');
+  constructor(private router: Router) {
   }
 
 }
