@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-clicker',
@@ -8,10 +8,13 @@ import {Router} from "@angular/router";
 })
 export class ClickerComponent implements OnInit {
 
-  ngOnInit(): void {
+  ngOnInit(): void { //
   }
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
+  setAccess(type: boolean) {
+    localStorage.setItem('access', JSON.stringify(type));
+  }
 }

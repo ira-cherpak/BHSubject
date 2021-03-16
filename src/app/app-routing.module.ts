@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-import {ClickerComponent} from "./clicker/clicker.component";
-import {ClosePageComponent} from "./close-page/close-page.component";
-import {CloseGuard} from "./close.guard";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {CloseGuard} from "./@core/_helpers/close.guard";
+import {CloseComponent} from "./pages/close/close.component";
+import {ClickerComponent} from "./pages/clicker/clicker.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: 'clicker', pathMatch: 'full'},
   {path: 'clicker', component: ClickerComponent},
-  {path: 'close-page', component: ClosePageComponent, canActivate: [CloseGuard]}
+  {path: 'close', component: CloseComponent, canActivate: [CloseGuard]}
 ];
 
 @NgModule({
@@ -15,4 +15,5 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [CloseGuard]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
