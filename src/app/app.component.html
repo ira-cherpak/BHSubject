@@ -4,3 +4,6 @@
 <p>Теперь переменная в родительском компоненте имеет вид {{counter}}</p>
 <button (click)="incr()">increaseMeChild (но я в родителе)</button>
 <app-clicker [clicker]="clickSubject$"></app-clicker>
+<form [formGroup]="form">
+  <input type="text" formControlName="textInput">
+</form>
